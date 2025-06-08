@@ -40,14 +40,6 @@ Permitir que usuários acompanhem o clima de qualquer cidade do mundo com previs
 - Capacitor Geolocation + Push
 - Local Storage / IndexedDB
 
-## 🚀 Como Executar
-
-```bash
-git clone https://github.com/mariactbuonafina/GeoClima.git
-cd GeoClima
-npm install
-ng serve
-
 ## 📚 Documentação de Casos de Uso
 
 ### 📑 Sumário
@@ -177,6 +169,16 @@ ng serve
 **Tratamento de Exceções**
 - Permissão negada.
 - Falha no envio.
+
+---
+
+## 🚀 Como Executar
+
+```bash
+git clone https://github.com/mariactbuonafina/GeoClima.git
+cd GeoClima
+npm install
+ng serve
 
 ---
 
