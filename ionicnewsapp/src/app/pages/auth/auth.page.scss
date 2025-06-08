@@ -1,20 +1,20 @@
-/* Estilos base (mobile first) */
+
 .top-wave {
   width: 100vw;
   height: 110px;
   overflow: hidden;
-  position: absolute;
+  position: none;
   top: 0;
   left: 0;
   z-index: 2;
 }
 
 .content-bg {
-  --background: linear-gradient(180deg, #e0f7fa 0%, #ffffff 100%);
+  --background: linear-gradient(180deg, #4D70BA 0%, #ffffff 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alterado para flex-start no mobile */
+  align-items: flex-start;
   padding-top: 0;
 }
 
@@ -29,51 +29,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto; /* Centralizado horizontalmente */
+  margin: 50px auto;
 }
 
-/* Estilos para telas médias (tablets) */
+
 @media (min-width: 768px) {
   .content-bg {
-    align-items: center; /* Centraliza verticalmente em telas maiores */
+    align-items: center;
     padding-top: 0;
   }
 
   .auth-card {
-    margin: 0 auto; /* Remove a margem superior em telas maiores */
+    margin: 0 auto;
     padding: 50px 40px 40px 40px;
   }
 }
 
-/* Estilos para telas grandes (desktop) */
-/* Adicione isso aos seus media queries para telas grandes */
+
 @media (min-width: 1024px) {
   .logo-area {
-    margin-bottom: 15px; /* Aumenta o espaçamento abaixo do logo */
+    margin-bottom: 15px; 
     
     h1 {
-      margin-bottom: 10px; /* Espaço extra abaixo do título */
+      margin-bottom: 10px; 
       position: relative;
       
-      /* Opcional: linha decorativa para melhor separação */
+      
       &::after {
         content: "";
         display: block;
         width: 60px;
         height: 2px;
-        background: #51c4d3;
+        background: #4D70BA;
         margin: 12px auto 0;
         opacity: 0.5;
       }
     }
     
     ion-icon {
-      margin-bottom: 12px; /* Mais espaço abaixo do ícone */
+      margin-bottom: 12px;
     }
   }
 }
 
-/* Para telas extra grandes (opcional) */
+
 @media (min-width: 1440px) {
   .logo-area {
     margin-bottom: 20px;
@@ -92,7 +91,7 @@
   }
 }
 
-/* Mantendo os estilos existentes (sem alteração) */
+
 .logo-area {
   display: flex;
   flex-direction: column;
@@ -106,7 +105,7 @@
   }
   h1 {
     font-family: 'Montserrat', Arial, sans-serif;
-    color: #126e82;
+    color: #758ACF;
     font-size: 2rem;
     font-weight: 700;
     margin: 0;
@@ -116,7 +115,7 @@
 }
 
 h2 {
-  color: #126e82;
+  color: #758ACF;
   margin-bottom: 22px;
   margin-top: 8px;
   font-size: 1.15rem;
@@ -139,7 +138,7 @@ form {
 
 .input-label {
   font-size: 1.04rem;
-  color: #126e82;
+  color: #1C5FA2;
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 600;
   margin-bottom: 2px;
@@ -157,7 +156,7 @@ form {
   font-size: 1.14rem;
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 500;
-  color: #164b60;
+  color: #000;
   padding: 12px 18px;
   transition: box-shadow 0.2s;
   height: 46px;
@@ -176,7 +175,7 @@ form {
   margin-left: 4px;
   font-family: 'Montserrat', Arial, sans-serif;
   font-size: 1.01rem;
-  color: #126e82;
+  color: #5873cc;
   user-select: none;
   gap: 7px;
 }
@@ -201,7 +200,7 @@ form {
 }
 
 .main-btn {
-  background: linear-gradient(90deg, #51c4d3 0%, #126e82 100%);
+  background: linear-gradient(90deg, #4D70BA 0%, #126e82 100%);
   color: #fff;
   border-radius: 26px;
   font-family: 'Montserrat', Arial, sans-serif;
@@ -215,11 +214,11 @@ form {
 }
 
 .main-btn:active {
-  filter: brightness(0.93);
+  filter: brightness(0.90);
 }
 
 .toggle-btn {
-  color: #51c4d3 !important;
+  color: #758ACF !important;
   font-weight: 600;
   font-size: 1.05rem;
   letter-spacing: 0.01em;

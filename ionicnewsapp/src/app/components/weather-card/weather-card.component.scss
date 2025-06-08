@@ -1,13 +1,13 @@
 .weather-card {
-  background: #f4f9fd;
-  color: #126e82;
+  background: #4D70BA;
+  color: #fff;
   margin-bottom: 1rem;
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px #0001;
   width: 100%;
   
-  /* Centralização aprimorada */
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +54,7 @@
 
 .weather-suggestion {
   margin-top: 0.5rem;
-  color: #126e82;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +64,7 @@
 }
 
 .secondary-card {
-  background: #e9f6fb;
+  background: #4D70BA;
   border: 1px dashed #51c4d3;
   
   .weather-main {
