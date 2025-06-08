@@ -183,11 +183,12 @@ ng serve
 
 ## 🤝 Como Contribuir
 
-1. Faça um fork do projeto
-2. Crie sua branch (`git checkout -b feature/nova-funcionalidade`)
-3. Faça alterações e commit (`git commit -m 'feat: nova funcionalidade'`)
-4. Push para sua branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request com descrição detalhada
+1. Leia o CONTRIBUTING.md
+2. Faça um fork do projeto
+3. Crie sua branch (`git checkout -b feature/nova-funcionalidade`)
+4. Faça alterações e commit (`git commit -m 'feat: nova funcionalidade'`)
+5. Push para sua branch (`git push origin feature/nova-funcionalidade`)
+6. Abra um Pull Request com descrição detalhada
 
 ---
 
