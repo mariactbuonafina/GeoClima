@@ -1,0 +1,41 @@
+<div class="weather-card main-card">
+  <div class="weather-main">
+    <ion-icon [name]="getIconName(weather.icon)"></ion-icon>
+    <span class="temp">{{ weather.temperature }}°C</span>
+    <ion-button
+      fill="clear"
+      size="small"
+      color="warning"
+      (click)="toggleFavorite.emit(weather)"
+      [attr.aria-label]="isFavorite ? 'Desfavoritar cidade' : 'Favoritar cidade'"
+    >
+      <ion-icon [name]="isFavorite ? 'star' : 'star-outline'"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="weather-info">
+    <div>{{ weather.cityName || weather.cityId }}</div>
+    <div>{{ weather.description }}</div>
+    <div>💧 Umidade: {{ weather.humidity }}%</div>
+    <div>🌬️ Vento: {{ weather.windSpeed }} km/h</div>
+  </div>
+  @if (weather.condition === 'Rain') {
+    <div class="weather-suggestion">
+      <ion-icon name="umbrella-outline"></ion-icon>
+      <span>Leve um guarda-chuva!</span>
+    </div>
+  }
+</div>
+
+@if (forecastTomorrow) {
+  <div class="weather-card secondary-card">
+    <div class="weather-main">
+      <ion-icon [name]="getIconName(forecastTomorrow.icon)"></ion-icon>
+      <span class="temp">Amanhã: {{ forecastTomorrow.maxTemp }}°C</span>
+    </div>
+    <div class="weather-info small">
+      <div>{{ forecastTomorrow.description }}</div>
+      <div>Min: {{ forecastTomorrow.minTemp }}°C</div>
+      <div>Máx: {{ forecastTomorrow.maxTemp }}°C</div>
+    </div>
+  </div>
+}

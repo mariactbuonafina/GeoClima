@@ -1,0 +1,127 @@
+<div class="top-wave">
+  <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+    <path
+      d="M0,50 C150,150 350,0 500,100 L500,00 L0,0 Z"
+      style="stroke: none; fill: url(#waveGradient)"
+    />
+    <defs>
+      <linearGradient id="waveGradient" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#51c4d3" />
+        <stop offset="100%" stop-color="#126e82" />
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
+<ion-content [fullscreen]="true" class="ion-padding content-bg">
+  <div class="auth-card">
+    <div class="logo-area">
+      <ion-icon name="cloudy-night-outline"></ion-icon>
+      <h1>Tempo agora</h1>
+    </div>
+    <h2>{{ isLoginMode ? 'Entrar' : 'Criar Conta' }}</h2>
+    <form [formGroup]="authForm" (ngSubmit)="submit()">
+
+      @if (!isLoginMode) {
+        <div class="input-container">
+          <label for="name" class="input-label">Nome completo</label>
+          <input 
+            id="name"
+            type="text"
+            formControlName="name"
+            class="styled-input"
+            placeholder="Digite seu nome completo"
+            autocomplete="name"
+          />
+          @if (authForm.get('name')?.invalid && authForm.get('name')?.touched) {
+            <div class="error-note">
+              Nome é obrigatório.
+            </div>
+          }
+        </div>
+      }
+
+      <div class="input-container">
+        <label for="email" class="input-label">E-mail</label>
+        <input 
+          id="email"
+          type="email"
+          formControlName="email"
+          class="styled-input"
+          placeholder="Digite seu e-mail"
+          autocomplete="email"
+        />
+        @if (authForm.get('email')?.invalid && authForm.get('email')?.touched) {
+          <div class="error-note">
+            E-mail válido é obrigatório.
+          </div>
+        }
+      </div>
+
+      <div class="input-container">
+        <label for="password" class="input-label">Senha</label>
+        <input 
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          class="styled-input"
+          placeholder="Digite sua senha"
+          autocomplete="current-password"
+        />
+        @if (authForm.get('password')?.invalid && authForm.get('password')?.touched) {
+          <div class="error-note">
+            Senha deve ter pelo menos 6 caracteres.
+          </div>
+        }
+      </div>
+
+      @if (!isLoginMode) {
+        <div class="input-container">
+          <label for="confirmPassword" class="input-label">Confirmar senha</label>
+          <input 
+            id="confirmPassword"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            class="styled-input"
+            placeholder="Confirme sua senha"
+            autocomplete="new-password"
+          />
+          @if (authForm.get('confirmPassword')?.invalid && authForm.get('confirmPassword')?.touched) {
+            <div class="error-note">
+              As senhas não conferem.
+            </div>
+          }
+        </div>
+      }
+
+      <div class="show-password-checkbox">
+        <input
+          type="checkbox"
+          id="showPass"
+          (change)="togglePassword()"
+          [checked]="showPassword"
+        />
+        <label for="showPass">Mostrar senha</label>
+      </div>
+
+      <div class="ion-text-center ion-margin-top">
+        <ion-button expand="block" type="submit" shape="round" [disabled]="loading || authForm.invalid" class="main-btn">
+          {{ isLoginMode ? 'Entrar' : 'Cadastrar' }}
+          <ion-spinner *ngIf="loading" slot="end"></ion-spinner>
+        </ion-button>
+      </div>
+
+      <div class="ion-text-center ion-margin-top">
+        <ion-button fill="clear" size="small" (click)="toggleMode()" type="button" class="toggle-btn">
+          {{ isLoginMode ? 'Criar uma conta' : 'Já tenho uma conta' }}
+        </ion-button>
+      </div>
+
+      @if (error) {
+        <div class="error-note ion-text-center">
+          {{ error }}
+        </div>
+      }
+    </form>
+  </div>
+</ion-content>

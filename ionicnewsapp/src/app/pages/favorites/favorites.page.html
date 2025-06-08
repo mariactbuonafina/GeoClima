@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (favorites.length > 0) {
+    <ion-list>
+      @for (fav of favorites; track fav.cityId) {
+        <ion-item>
+          <ion-label>
+            <div *ngIf="weatherData[fav.cityId]; else loading">
+              <strong>
+                {{ weatherData[fav.cityId]?.cityName || fav.cityId }}
+              </strong>
+              <br>
+              {{ weatherData[fav.cityId]?.description }}<br>
+              <span>
+                {{ weatherData[fav.cityId]?.temperature }}°C
+                &middot; Vento: {{ weatherData[fav.cityId]?.windSpeed }} km/h
+              </span>
+            </div>
+            <ng-template #loading>
+              <ion-spinner name="dots"></ion-spinner> Carregando clima...
+            </ng-template>
+            <br>
+            <small>
+              Adicionado em: {{ fav.addedAt | date:'short' }}
+            </small>
+          </ion-label>
+          <ion-button color="danger" (click)="removeFavorite(fav.cityId)">Remover</ion-button>
+        </ion-item>
+      }
+    </ion-list>
+  } @else {
+    <div class="ion-text-center ion-margin">
+      <p>Você não tem cidades favoritas.</p>
+    </div>
+  }
+</ion-content>

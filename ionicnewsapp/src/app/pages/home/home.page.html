@@ -1,0 +1,109 @@
+<div class="top-wave">
+  <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+    <path
+      d="M0,50 C150,150 350,0 500,100 L500,00 L0,0 Z"
+      style="stroke: none; fill: url(#waveGradient)"
+    />
+    <defs>
+      <linearGradient id="waveGradient" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#51c4d3" />
+        <stop offset="100%" stop-color="#126e82" />
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
+<ion-content [fullscreen]="true" class="ion-padding content-bg">
+  <div class="home-card">
+    <div class="welcome">
+      <ion-icon name="partly-sunny-outline"></ion-icon>
+      <h1>Bom dia, {{ userName }}!</h1>
+      <p class="greeting">Veja como está o tempo agora:</p>
+    </div>
+
+    <city-search-bar (citySelected)="onSearchCity($event)"></city-search-bar>
+
+    <ion-button expand="block" fill="outline" (click)="goToFavorites()">
+      Ver Favoritos
+    </ion-button>
+
+    <div *ngIf="loading" class="loading">
+      <ion-spinner name="crescent"></ion-spinner>
+      <span>Carregando clima atual...</span>
+    </div>
+
+    <div *ngIf="error" class="error-note">{{ error }}</div>
+
+    <!-- Cartão clima atual -->
+    <weather-card
+      *ngIf="weather"
+      [weather]="weather"
+      [forecastTomorrow]="forecastTomorrow"
+      [isFavorite]="isFavorite(weather.cityId)"
+      (toggleFavorite)="toggleFavorite(weather)">
+    </weather-card>
+
+    <!-- Cartão cidade buscada -->
+    <div *ngIf="searchLoading" class="loading">
+      <ion-spinner name="crescent"></ion-spinner>
+      <span>Buscando cidade...</span>
+    </div>
+
+    <div *ngIf="searchError" class="error-note">{{ searchError }}</div>
+
+    <weather-card
+      *ngIf="searchWeather"
+      [weather]="searchWeather"
+      [forecastTomorrow]="searchForecast?.daily?.[1]"
+      [isFavorite]="isFavorite(searchWeather.cityId)"
+      (toggleFavorite)="toggleFavorite(searchWeather)">
+    </weather-card>
+
+    <!-- Previsão próximos dias para cidade de localização -->
+    <div *ngIf="!searchWeather && forecastNextDays.length > 0" class="forecast-section">
+      <h3>Próximos dias</h3>
+      <div class="forecast-list">
+        <div
+          *ngFor="let day of forecastNextDays; trackBy: trackByDate"
+          class="forecast-day"
+        >
+          <ion-icon [name]="getIconName(day.icon)"></ion-icon>
+          <span class="date">{{ day.date | date: 'EEE' }}</span>
+          <span class="desc">{{ day.description }}</span>
+          <span class="minmax">
+            <span class="min">Min: {{ day.minTemp | number: '1.0-0' }}°</span>
+            <span class="max">Max: {{ day.maxTemp | number: '1.0-0' }}°</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Previsão próximos dias para cidade pesquisada -->
+    <div *ngIf="searchWeather && searchForecastNextDays.length > 0" class="forecast-section">
+      <h3>Próximos dias</h3>
+      <div class="forecast-list">
+        <div
+          *ngFor="let day of searchForecastNextDays; trackBy: trackByDate"
+          class="forecast-day"
+        >
+          <ion-icon [name]="getIconName(day.icon)"></ion-icon>
+          <span class="date">{{ day.date | date: 'EEE' }}</span>
+          <span class="desc">{{ day.description }}</span>
+          <span class="minmax">
+            <span class="min">Min: {{ day.minTemp | number: '1.0-0' }}°</span>
+            <span class="max">Max: {{ day.maxTemp | number: '1.0-0' }}°</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <ion-button expand="block" shape="round" color="primary" (click)="refreshWeather()">
+        Atualizar previsão
+      </ion-button>
+      <ion-button expand="block" shape="round" fill="clear" color="secondary" (click)="logout()">
+        Sair
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
