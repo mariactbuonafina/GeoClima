@@ -32,6 +32,16 @@ ng serve
 ```
 ---
 
+## 🤝 Como Contribuir
+
+1. Faça um fork do projeto
+2. Crie sua branch (`git checkout -b feature/nova-funcionalidade`)
+3. Faça alterações e commit (`git commit -m 'feat: nova funcionalidade'`)
+4. Push para sua branch (`git push origin feature/nova-funcionalidade`)
+5. Abra um Pull Request com descrição detalhada
+
+---
+
 ## 🌿 Estratégia de Branches
 - main: Código estável e pronto para produção.
 - develop: Branch principal para desenvolvimento contínuo.
